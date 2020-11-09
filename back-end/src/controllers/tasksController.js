@@ -1,35 +1,40 @@
 import { v4 as uuidv4 } from "uuid";
-import db from "../database";
+import Task from "../models/Task";
 
 class TasksController {
-  index(request, response) {
-    db.query("SELECT * FROM tasks", (err, results, rows) => {
-      if (err) {
-        return response
-          .status(500)
-          .json({ error: "It is not possible search." });
-      }
+  async index(request, response) {
+    const { user_id } = request.params;
 
-      return response.status(200).json(results);
-    });
+    const tasks = await Task.index(user_id);
+
+    return response.status(200).json(tasks);
   }
 
-  create(request, response) {
+  async show(request, response) {
+    const { id_task } = request.params;
+    const { user_id } = request.body;
+
+    const task = await Task.findOne({ id_task, user_id });
+
+    if (!task) {
+      return response.status(404).json({ error: "Task not found" });
+    }
+
+    return response.status(200).json(task);
+  }
+
+  async create(request, response) {
     const { user_id } = request.params;
     const { task } = request.body;
     const id_task = uuidv4();
 
-    db.execute(
-      "INSERT INTO tasks (id_task, task, user_id) VALUES (?, ?, ?)",
-      [id_task, task, user_id],
-      (err, results, rows) => {
-        if (err) {
-          return response.status(400).json({ error: "Insert failed." });
-        }
+    const taskCreated = await Task.create({
+      id_task,
+      task,
+      user_id,
+    });
 
-        return response.status(201).json(results);
-      }
-    );
+    return response.status(201).json(taskCreated);
   }
 
   update(request, response) {

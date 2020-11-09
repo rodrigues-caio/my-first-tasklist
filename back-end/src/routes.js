@@ -13,7 +13,8 @@ routes.put("/user/:id", usersController.update);
 
 routes.delete("/user/:id", usersController.delete);
 
-routes.get("/tasks", tasksController.index);
+routes.get("/tasks/:user_id", tasksController.index);
+routes.get("/tasks/:id_task", tasksController.show);
 
 routes.post("/tasks/:user_id", tasksController.create);
 
