@@ -1,0 +1,24 @@
+import { Router } from "express";
+
+import usersController from "./controllers/usersController";
+import tasksController from "./controllers/tasksController";
+
+const routes = Router();
+
+routes.get("/user/:id", usersController.index);
+
+routes.post("/user", usersController.create);
+
+routes.put("/user/:id", usersController.update);
+
+routes.delete("/user/:id", usersController.delete);
+
+routes.get("/tasks", tasksController.index);
+
+routes.post("/tasks/:user_id", tasksController.create);
+
+routes.put("/tasks/:id_task", tasksController.update);
+
+routes.delete("/tasks/:id_task", tasksController.delete);
+
+export default routes;
