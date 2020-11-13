@@ -11,8 +11,7 @@ class TasksController {
   }
 
   async show(request, response) {
-    const { id_task } = request.params;
-    const { user_id } = request.body;
+    const { id_task, user_id } = request.params;
 
     const task = await Task.findOne({ id_task, user_id });
 
