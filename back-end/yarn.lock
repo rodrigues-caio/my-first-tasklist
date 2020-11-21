@@ -79,6 +79,11 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
+base64-url@^2.3.2:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/base64-url/-/base64-url-2.3.3.tgz#645b71455c75109511f27d98450327e455f488ec"
+  integrity sha512-dLMhIsK7OplcDauDH/tZLvK7JmUZK3A7KiQpjNzsBrM6Etw7hzNI1tLEywqJk9NnwkgWuFKSlx/IUO7vF6Mo8Q==
+
 binary-extensions@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.1.0.tgz#30fa40c9e7fe07dbc895678cd287024dea241dd9"
@@ -706,10 +711,30 @@ is-yarn-global@^0.3.0:
   resolved "https://registry.yarnpkg.com/is-yarn-global/-/is-yarn-global-0.3.0.tgz#d502d3382590ea3004893746754c89139973e232"
   integrity sha512-VjSeb/lHmkoyd8ryPVIKvOCn4D1koMqY+vqyjjUfc3xyKtP4dYOxM44sZrnqQSzSds3xyOrUTLTC9LVCVgLngw==
 
+is.object@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/is.object/-/is.object-1.0.0.tgz#e4f4117e9f083b35c8df5cf817ea3efb0452fdfa"
+  integrity sha1-5PQRfp8IOzXI31z4F+o++wRS/fo=
+
 json-buffer@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/json-buffer/-/json-buffer-3.0.0.tgz#5b1f397afc75d677bde8bcfc0e47e1f9a3d9a898"
   integrity sha1-Wx85evx11ne96Lz8Dkfh+aPZqJg=
+
+json-parse-safe@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/json-parse-safe/-/json-parse-safe-2.0.0.tgz#27b4fddd31114936136b77d9bbe13f7ef5c897de"
+  integrity sha512-aK7Ccg46n9JkRil/M5s8ytNP9wk0Tc0TsTDVMOYxB2cGsL7XFJ1vfWsurkVZy6zR55KZ+2SWHEuzQeZK4PH6lg==
+
+json-web-token@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/json-web-token/-/json-web-token-3.2.0.tgz#06cbc8ab039f474f0f3fabc2e073e7fb6903b8d8"
+  integrity sha512-y+zDkON17Zk7X3Hf0Rv04k8N7cP1GDRonLLL7WkdnlHl1ur2hwta4MYzxG8nWhQWRBNlIp1erszhmo/65RSTIw==
+  dependencies:
+    base64-url "^2.3.2"
+    is.object "^1.0.0"
+    json-parse-safe "^2.0.0"
+    xtend "^4.0.2"
 
 keyv@^3.0.0:
   version "3.1.0"
@@ -1429,6 +1454,11 @@ xdg-basedir@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
+
+xtend@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
+  integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
 yallist@^2.1.2:
   version "2.1.2"
