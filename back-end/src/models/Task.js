@@ -1,4 +1,4 @@
-import db from "../database";
+import db from '../database';
 
 class Task {
   async index(id) {
@@ -9,7 +9,7 @@ class Task {
 
       return rows;
     } catch (err) {
-      return new Error("Error in the listing of tasks");
+      return new Error('Error in the listing of tasks');
     }
   }
 
@@ -23,7 +23,7 @@ class Task {
 
       return task;
     } catch (err) {
-      return new Error("Error at list one task");
+      return new Error('Error at list one task');
     }
   }
 
@@ -42,7 +42,35 @@ class Task {
 
       return taskCreated;
     } catch (err) {
-      return new Error("Error in the create the task.");
+      return new Error('Error in the create the task.');
+    }
+  }
+
+  async updateTask({ id_task, user_id, task }) {
+    try {
+      await db.execute(
+        `UPDATE tasks SET task='${task}' WHERE id_task='${id_task}' AND user_id='${user_id}'`
+      );
+
+      const [rows] = await db.execute(
+        `SELECT task FROM tasks WHERE id_task='${id_task}' AND user_id='${user_id}'`
+      );
+
+      return rows[0];
+    } catch (err) {
+      return new Error(`Erro in the update task: ${err}`);
+    }
+  }
+
+  async deleteTask({ id_task, user_id }) {
+    try {
+      await db.execute(
+        `DELETE FROM tasks WHERE id_task='${id_task}' AND user_id='${user_id}'`
+      );
+
+      return;
+    } catch (err) {
+      return new Error(`Error in the delete task: ${err}`);
     }
   }
 }

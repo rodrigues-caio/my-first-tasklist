@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from "uuid";
-import Task from "../models/Task";
+import { v4 as uuidv4 } from 'uuid';
+import Task from '../models/Task';
 
 class TasksController {
   async index(request, response) {
@@ -16,7 +16,7 @@ class TasksController {
     const task = await Task.findOne({ id_task, user_id });
 
     if (!task) {
-      return response.status(404).json({ error: "Task not found" });
+      return response.status(404).json({ error: 'Task not found' });
     }
 
     return response.status(200).json(task);
@@ -36,38 +36,26 @@ class TasksController {
     return response.status(201).json(taskCreated);
   }
 
-  update(request, response) {
-    const { id_task } = request.params;
-    const { task, user_id } = request.body;
+  async update(request, response) {
+    const { id_task, user_id } = request.params;
+    const { task } = request.body;
 
-    db.execute(
-      "UPDATE tasks SET task = ? WHERE id_task = ? AND user_id = ?",
-      [task, id_task, user_id],
-      (err, results, rows) => {
-        if (err) {
-          return response.status(400).json({ error: "Update failed." });
-        }
+    const taskUpdated = await Task.updateTask({ id_task, user_id, task });
 
-        return response.status(200).json(results);
-      }
-    );
+    if (!taskUpdated) {
+      return response.status(401).json({ error: 'Not possible update task' });
+    }
+
+    return response.status(200).json(taskUpdated);
   }
 
-  delete(request, response) {
+  async delete(request, response) {
     const { id_task } = request.params;
     const { user_id } = request.body;
 
-    db.execute(
-      "DELETE FROM tasks WHERE id_task = ? AND user_id = ?",
-      [id_task, user_id],
-      (err, results, rows) => {
-        if (err) {
-          return response.status(400).json({ error: "Delete failed." });
-        }
+    await Task.deleteTask({ id_task, user_id });
 
-        return response.send();
-      }
-    );
+    return response.send();
   }
 }
 
