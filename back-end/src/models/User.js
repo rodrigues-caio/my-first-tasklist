@@ -1,4 +1,4 @@
-import db from "../database";
+import db from '../database';
 
 class User {
   async show({ id }) {
@@ -9,7 +9,21 @@ class User {
 
       return user;
     } catch (err) {
-      return new Error("Error on the search user");
+      return new Error('Error on the search user');
+    }
+  }
+
+  async findOne({ email }) {
+    try {
+      const [rows] = await db.execute(
+        `SELECT * FROM users WHERE email='${email}'`
+      );
+
+      const user = rows[0];
+
+      return user;
+    } catch (err) {
+      return new Error(`Error to search an user: ${err}`);
     }
   }
 
@@ -60,7 +74,7 @@ class User {
 
       return;
     } catch (err) {
-      return new Error("Error on delete user.");
+      return new Error('Error on delete user.');
     }
   }
 }

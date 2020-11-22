@@ -1,6 +1,6 @@
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 
-import User from "../models/User";
+import User from '../models/User';
 
 class UsersController {
   async index(request, response) {
@@ -9,7 +9,7 @@ class UsersController {
     const user = await User.show({ id });
 
     if (!user) {
-      return response.status(401).json({ error: "User not found." });
+      return response.status(401).json({ error: 'User not found.' });
     }
 
     return response.status(200).json(user);
@@ -23,7 +23,7 @@ class UsersController {
     const existsEmail = await User.findByEmail({ email });
 
     if (existsEmail) {
-      return response.status(400).json({ error: "This email already exists." });
+      return response.status(400).json({ error: 'This email already exists.' });
     }
 
     const user = await User.createUser({
@@ -44,7 +44,7 @@ class UsersController {
     const existsEmail = await User.findByEmail({ email });
 
     if (existsEmail) {
-      return response.status(400).json({ error: "This email already exists." });
+      return response.status(400).json({ error: 'This email already exists.' });
     }
 
     const user = await User.updateUser({ id, name, email, password, image });
@@ -57,7 +57,7 @@ class UsersController {
 
     await User.deleteUser(id);
 
-    return response.status(200).json({ success: "User deleted." });
+    return response.status(200).json({ success: 'User deleted.' });
   }
 }
 
