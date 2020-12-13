@@ -4,9 +4,7 @@ import User from '../models/User';
 
 class UsersController {
   async index(request, response) {
-    const { id } = request.params;
-
-    const user = await User.show({ id });
+    const user = await User.listAll();
 
     if (!user) {
       return response.status(401).json({ error: 'User not found.' });

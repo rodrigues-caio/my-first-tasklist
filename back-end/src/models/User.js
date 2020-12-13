@@ -1,6 +1,12 @@
 import db from '../database';
 
 class User {
+  async listAll() {
+    const users = await db.query('SELECT * FROM users');
+
+    return users[0];
+  }
+
   async show({ id }) {
     try {
       const [rows] = await db.execute(`SELECT * FROM users WHERE id = '${id}'`);

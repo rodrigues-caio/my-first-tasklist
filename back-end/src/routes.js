@@ -8,7 +8,7 @@ import sessionController from './controllers/sessionController';
 
 const routes = Router();
 
-routes.get('/user/:id', usersController.index);
+routes.get('/user', usersController.index);
 
 routes.post('/user', usersController.create);
 
