@@ -1,4 +1,6 @@
 import jwt from 'jsonwebtoken';
+import { compareSync } from 'bcrypt';
+
 import User from '../models/User';
 
 class SessionController {
@@ -11,13 +13,14 @@ class SessionController {
       return response.status(404).json({ error: 'User not found.' });
     }
 
-    if (user.password !== password) {
+    const matchPassword = compareSync(password, user.password);
+
+    if (!matchPassword) {
       return response
         .status(401)
         .json({ error: 'Password or email are incorrects.' });
     }
 
-    console.log('autenticado');
     const token = jwt.sign({ user_id: user.id }, 'siuhaushajsnaisn', {
       expiresIn: '2 days',
     });
