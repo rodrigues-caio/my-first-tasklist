@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken';
 import { compareSync } from 'bcrypt';
 
+import authConfig from '../config/auth';
+
 import User from '../models/User';
 
 class SessionController {
@@ -21,8 +23,8 @@ class SessionController {
         .json({ error: 'Password or email are incorrects.' });
     }
 
-    const token = jwt.sign({ user_id: user.id }, 'siuhaushajsnaisn', {
-      expiresIn: '2 days',
+    const token = jwt.sign({ user_id: user.id }, authConfig.verificationKey, {
+      expiresIn: authConfig.expireIn,
     });
 
     return response.status(200).json({ user, token });
