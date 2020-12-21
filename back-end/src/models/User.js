@@ -1,4 +1,4 @@
-import db from '../database';
+const db = require('../database');
 
 class User {
   async listAll() {
@@ -85,4 +85,4 @@ class User {
   }
 }
 
-export default new User();
+module.exports = new User();
