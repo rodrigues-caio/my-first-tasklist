@@ -8,4 +8,4 @@ const connect = mysql.createPool({
   user: 'root',
 });
 
-export default connect;
+module.exports = connect;

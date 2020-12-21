@@ -75,4 +75,4 @@ class Task {
   }
 }
 
-export default new Task();
+module.exports = new Task();
