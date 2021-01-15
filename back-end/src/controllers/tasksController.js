@@ -55,7 +55,7 @@ class TasksController {
 
     await Task.deleteTask({ id_task, user_id });
 
-    return response.send();
+    return response.status(200)send();
   }
 }
 
