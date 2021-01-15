@@ -1,6 +1,4 @@
-const crypto = require(crypto);
-
-module.exports = {
+export default {
   createUser(user) {
     const id = 12313;
 

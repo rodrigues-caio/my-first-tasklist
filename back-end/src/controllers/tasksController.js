@@ -8,7 +8,7 @@ class TasksController {
     const tasks = await Task.index(user_id);
 
     return response.status(200).json(tasks);
-  }
+  };
 
   async show(request, response) {
     const { id_task, user_id } = request.params;
@@ -20,7 +20,7 @@ class TasksController {
     }
 
     return response.status(200).json(task);
-  }
+  };
 
   async create(request, response) {
     const { user_id } = request.params;
@@ -34,7 +34,7 @@ class TasksController {
     });
 
     return response.status(201).json(taskCreated);
-  }
+  };
 
   async update(request, response) {
     const { id_task, user_id } = request.params;
@@ -47,7 +47,7 @@ class TasksController {
     }
 
     return response.status(200).json(taskUpdated);
-  }
+  };
 
   async delete(request, response) {
     const { id_task } = request.params;
@@ -56,7 +56,7 @@ class TasksController {
     await Task.deleteTask({ id_task, user_id });
 
     return response.status(200)send();
-  }
+  };
 }
 
 export default new TasksController();

@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise');
+import mysql from 'mysql2/promise';
 
 const connect = mysql.createPool({
   host: 'localhost',
@@ -8,4 +8,4 @@ const connect = mysql.createPool({
   user: 'root',
 });
 
-module.exports = connect;
+export default connect;

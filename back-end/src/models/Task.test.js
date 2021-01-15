@@ -1,5 +1,5 @@
-const db = require('../database');
-const Task = require('./Task');
+import db from '../database';
+import Task from './Task';
 
 describe('Operations Tasks', () => {
   it('should be able to list tasks.', async () => {
