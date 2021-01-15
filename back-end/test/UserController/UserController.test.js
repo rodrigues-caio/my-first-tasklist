@@ -1,4 +1,4 @@
-const UserController = require('./UserController');
+import UserController from './UserController';
 
 describe('CRUD of User', () => {
   it('should be able to create an user.', () => {
