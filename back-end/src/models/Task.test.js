@@ -1,7 +1,7 @@
 const db = require('../database');
 const Task = require('./Task');
 
-describe('CRUD in tasks', () => {
+describe('Operations Tasks', () => {
   it('should be able to list tasks.', async () => {
     const taskId = '1';
 

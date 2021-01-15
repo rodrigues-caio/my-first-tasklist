@@ -1,5 +1,5 @@
-const db = require('../database');
-const User = require('./User');
+import db from '../database';
+import User from './User';
 
 describe('CRUD in users', () => {
   it('should be able to list users.', async () => {
